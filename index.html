@@ -1,0 +1,53 @@
+<!--
+    Name: HongJie Chang
+    Date: 3/10/2022
+    Purpose: A home page for the visualisation(s) created in Week10Homework
+    Acknowledgement: This file and style.css file are created in reference to Week 9 & 10 Lab Answer folder.
+    While the vega JSON file is referenced from Week 8 Lab Section 2 Proportional Symbol Map.
+
+	In overall, this whole directory is duplicated from Week9Homework directory but modified for this homework. This duplication does not apply to GitHub repository.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="cssFiles/style.css" media="all">
+    <title>Worldwide Population - Week10 Homework</title>
+
+    <!--Importing Ubuntu font style for body from https://fonts.google.com/share?selection.family=Ubuntu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page">
+        <h1>Worldwide Population in 2020</h1>
+        <p style="font-size:13px;color:grey;font-family:Comic Sans MS;">Created on 3/10/2022, Last Edited on 9/10/2022 By me</p>
+        <blockquote style="font-weight:bold;">The dataset used for this homework will be about <u>Worldwide Population</u>. In which it is different to Week9Homework's visualisation because the dataset in Week9's are not satisfied, so <u>the dataset for this homework will be confirmed to be used in Assignment 2.</u></blockquote>
+        <hr>
+        <h2>Map Visualisation</h2>
+        <div id="vis1" class="vis-container"></div>
+        <hr/><br/>
+
+        <h2>Interactive Visualisation</h2>
+        <div id="vis2" class="vis-container"></div>
+        <blockquote>Drag slider to change year.<br/>Click on legend to filter religions.</blockquote>
+    </div>
+
+    <script type="text/javascript">
+        var spec1 = "js/choropleth_map.vg.json";
+        var spec2 = "js/religion.vg.json";
+
+        vegaEmbed('#vis1', spec1, /*{actions: false}*/).then(function(result) {
+        }).catch(console.error);
+
+        vegaEmbed('#vis2', spec2, /*{actions: false}*/).then(function(result) {
+        }).catch(console.error);
+    </script>
+</body>
+</html>

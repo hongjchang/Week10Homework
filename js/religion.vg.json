@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 600,
+  "title": "Number of Disciple in Religions in the World between 2010 and 2020",
+  "data": {
+    "url": "../datasets/MODIFIED_religion_by_num_of_population.csv"
+  },
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2010,
+      "bind": {
+        "input": "range",
+        "min": 2010,
+        "max": 2020,
+        "step": 10,
+        "name": "Select Year to Filter:"
+      }
+    },
+    {
+      "name": "religions",
+      "select": {"type": "point", "fields": ["AllReligions"]},
+      "bind":"legend"
+    }
+  ],
+  "transform": [{"filter": "year(datum.Year) == year_select"}, {"filter": {"param": "religions"}}],
+  "mark": {"type": "bar", "cornerRadiusTopLeft":3, "cornerRadiusTopRight": 3},
+  "encoding": {
+    "x": {
+      "field": "Region", "type": "nominal", "title": "Regions"
+    },
+    "y": {
+      "aggregate": "count", "type": "quantitative"
+    },
+    "color": {
+      "field": "AllReligions",
+      "type": "nominal",
+      "title": "Religions",
+      "scale": {
+        "domain": ["Christians","Muslims","Unaffiliated","Hindus","Buddhists","Folk Religions","Others","Jews"],
+        "range": ["#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]
+      }
+    },
+    "opacity": {
+      "condition": {"param": "religions", "value": 1},
+      "value": 0.1
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "Region", "type": "nominal", "title": "Region"},
+      {"field": "AllReligions", "type": "quantitative", "title": "Total Number of Disciples", "format": ".4s"}
+    ]
+  }
+}
