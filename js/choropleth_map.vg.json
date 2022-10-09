@@ -5,7 +5,7 @@
     "title": "The Most Population in the World in 2020",
     "projection": {"type": "equalEarth"},
     "data": {
-      "url": "ne_110m_admin_0_countries.topojson",
+      "url": "https://raw.githubusercontent.com/hongjchang/Week10Homework/main/js/ne_110m_admin_0_countries.topojson",
       "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
     },
     "transform": [
@@ -13,7 +13,7 @@
         "lookup": "properties.sov0name",
         "from": {
           "data": {
-            "url": "../datasets/MODIFIED_world_population_2020.csv"
+            "url": "https://raw.githubusercontent.com/hongjchang/Week10Homework/main/datasets/MODIFIED_world_population_2020.csv"
           },
           "key": "Country",
           "fields": ["Population"]
